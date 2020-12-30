@@ -15,5 +15,5 @@
 
 $router->group(['prefix' => 'addresses'], function () use ($router) {
     $router->get('/', 'AddressController@findByStreet');
-    $router->get('/{cep}', 'AddressController@show');
+    $router->get('/{cep}', 'AddressController@findByCep');
 });
