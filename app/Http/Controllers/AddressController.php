@@ -3,19 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
     public function findByCep(string $cep){
         $address = Address::where('cep', $cep)->first();
 
@@ -26,7 +17,15 @@ class AddressController extends Controller
         return response()->json($address);
     }
 
-    public function findByStreet(){
+    public function findByStreet(Request $request){
+        $street = $request->query('street');
 
+        $address = Address::where('street', 'LIKE', "%$street%")->get();
+
+        if(!$address){
+            return response()->json(['error' => 'Rua não encontrada'], 404);
+        }
+
+        return response()->json($address);
     }
 }
