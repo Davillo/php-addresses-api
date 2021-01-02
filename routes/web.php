@@ -13,7 +13,7 @@
 |
 */
 
-$router->group(['prefix' => 'addresses'], function () use ($router) {
+$router->group(['prefix' => '/addresses'], function () use ($router) {
     $router->get('/', 'AddressController@findByStreet');
     $router->get('/{cep}', 'AddressController@findByCep');
 });
