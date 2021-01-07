@@ -17,13 +17,13 @@ class CreateAddressesTable extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('street', 180);
-            $table->string('cep', 12);
+            $table->string('zip_code', 12);
             $table->integer('type');
             $table->unsignedBigInteger('district_id');
             $table->foreign('district_id')->references('id')->on('districts');
         });
 
-       
+
     }
 
     /**

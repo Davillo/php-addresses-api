@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
-    public function findByCep(string $cep){
-        $address = Address::where('cep', $cep)->first();
+    public function findbyZipCode(string $zipCode){
+        $address = Address::where('zip_code', $zipCode)->first();
 
         if(!$address){
             return response()->json(['error' => 'CEP não encontrado'], 404);
